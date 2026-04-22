@@ -139,7 +139,7 @@ export default function DuoDentHome() {
           <div className="relative mb-7">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl">
               <Image
-                src="/hero-dentist-p.jpg"
+                src="/hero-dentist.jpg"
                 alt="Echipa Duo Dent"
                 fill
                 className="object-cover"
