@@ -2,8 +2,7 @@ import { BookOpen, Stethoscope, Sparkles } from 'lucide-react'
 
 export default function ArticleListHero({ count }: { count: number }) {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-dental-blue/60 via-transparent to-transparent" />
+    <section className="relative overflow-hidden bg-dental-cream">
       <div className="mx-auto max-w-6xl px-6 pb-6 pt-28 md:pt-32">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-dental-blueDark bg-white/80 px-4 py-2 text-sm font-semibold text-dental-heading shadow-sm backdrop-blur">

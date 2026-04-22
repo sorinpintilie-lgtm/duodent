@@ -2,18 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
-import {
-  AnimatePresence,
-  motion,
-} from 'framer-motion';
-import {
-  ArrowRight,
-  Clock3,
-  MapPin,
-  Phone,
-  User,
-  X,
-} from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, Clock3, MapPin, Phone, User, X } from 'lucide-react';
 
 type Doctor = {
   name: string;
@@ -41,35 +31,36 @@ const locations: LocationItem[] = [
       'Marți, Joi, Vineri: 09:00 – 18:00',
     ],
     address: 'Bd. Camil Ressu nr. 52, Bl. C16, Sc. B, Ap. 12, Parter, Sector 3',
-doctors: [
-{
-          name: 'Dr. Valeriu Nedelcu',
-          specialty: 'Stomatologie generală',
-          description:
-            'Misiunea mea este să ofer fiecărui pacient un tratament clar explicat, bine planificat și realizat cu atenție la detalii. Cred că o experiență medicală bună înseamnă răbdare, comunicare și încredere de la prima consultație până la finalul tratamentului.',
-          image: '/images/echipa/valeriu-nedelcu.jpg',
-        },
-       {
-         name: 'Dr. Shaban Saied',
-         specialty: 'Stomatologie generală',
-         description:
-           'Îmi doresc ca fiecare pacient să se simtă ascultat, înțeles și tratat cu grijă. Pun accent pe explicații simple, soluții potrivite fiecărui caz și o relație medicală bazată pe calm, consecvență și claritate.',
-       },
-{
-          name: 'Dr. Mihăilă Ancuța',
-          specialty: '',
-          description:
-            'Mihăilă Ancuța face parte din echipa Duo Dent, aducând întratrea și atenția necesară pentru fiecare pacient. Principalul obiectiv este oferirea unei experiențe medicale clare, bine explicate și adaptate nevoilor specifice ale fiecărei persoane.',
-          image: '/images/echipa/mihaila-ancuta.jpg',
-        },
-        {
-          name: 'Popa Titu-Răzvan',
-          specialty: 'Manager general',
-          description:
-            'Titu-Răzvan Popa este managerul general Duo Dent, asigurând coordonarea între cele trei locații și buna funcționare a întregii echipe. Principalul obiectiv este de a facilita o experiență Medicală de calitate pentru fiecare pacient.',
-          image: '/images/echipa/titu-razvan-popa.jpg',
-        },
-      ],
+    doctors: [
+      {
+        name: 'Dr. Valeriu Nedelcu',
+        specialty: 'Stomatologie generală',
+        description:
+          'Misiunea mea este să ofer fiecărui pacient un tratament clar explicat, bine planificat și realizat cu atenție la detalii. Cred că o experiență medicală bună înseamnă răbdare, comunicare și încredere de la prima consultație până la finalul tratamentului.',
+        image: '/images/echipa/valeriu-nedelcu.jpg',
+      },
+      {
+        name: 'Mihăilă Ancuța',
+        specialty: 'Asistent medical',
+        description:
+          'Mihăilă Ancuța face parte din echipa Duo Dent, aducând implicare și atenția necesară pentru fiecare pacient. Principalul obiectiv este oferirea unei experiențe medicale clare, bine explicate și adaptate nevoilor specifice ale fiecărei persoane.',
+        image: '/images/echipa/mihaila-ancuta.jpg',
+      },
+      {
+        name: 'Georgiana Dumitru',
+        specialty: 'Asistent medical',
+        description:
+          'Georgiana Dumitru face parte din echipa Duo Dent, asigurând suportul necesar în cabinet și ajutând la buna desfășurare a tratamentelor. Este parte importantă a echipei, contribuind la confortul și siguranța pacienților.',
+        image: '/images/echipa/georgiana-dumitru.jpeg',
+      },
+      {
+        name: 'Popa Titu-Răzvan',
+        specialty: 'Manager general',
+        description:
+          'Titu-Răzvan Popa este managerul general Duo Dent, asigurând coordonarea între cele trei locații și buna funcționare a întregii echipe. Principalul obiectiv este de a facilita o experiență medicală de calitate pentru fiecare pacient.',
+        image: '/images/echipa/titu-razvan-popa.jpg',
+      },
+    ],
   },
   {
     slug: 'belciugatele',
@@ -84,12 +75,6 @@ doctors: [
         description:
           'Îmi propun să ofer tratamente adaptate nevoilor reale ale fiecărui pacient, într-un mod cât mai clar și bine organizat. Pentru mine, medicina dentară înseamnă atenție, responsabilitate și construirea unei relații bazate pe încredere.',
         image: '/images/echipa/marius-popescu.jpg',
-      },
-      {
-        name: 'Dr. Shaban Saied',
-        specialty: 'Stomatologie generală',
-        description:
-          'Îmi doresc ca fiecare pacient să se simtă ascultat, înțeles și tratat cu grijă. Pun accent pe explicații simple, soluții potrivite fiecărui caz și o relație medicală bazată pe calm, consecvență și claritate.',
       },
       {
         name: 'Dr. Valeriu Nedelcu',
@@ -112,13 +97,15 @@ doctors: [
     title: 'Valea Călugărească',
     phones: ['0711.042.920'],
     scheduleLines: ['Program: 10:00 – 20:00'],
-    address: 'Str. Mihai Viteazul nr. 180, Etaj, Com. Valea Călugărească, Jud. Prahova',
+    address:
+      'Str. Mihai Viteazul nr. 180, Etaj, Com. Valea Călugărească, Jud. Prahova',
     doctors: [
       {
         name: 'Dr. Ioana Ludușan',
         specialty: 'Stomatologie generală',
         description:
           'Cred într-o abordare calmă și atentă, în care pacientul înțelege fiecare etapă a tratamentului. Îmi doresc ca experiența din cabinet să fie clară, echilibrată și adaptată nevoilor reale ale fiecărei persoane.',
+        image: '/images/echipa/ioana-ludusan.jpeg',
       },
       {
         name: 'Dr. Alexandru Vrăjescu',
@@ -179,6 +166,7 @@ export default function EchipaNoastraPage() {
     }
 
     const previousOverflow = document.body.style.overflow;
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setActiveDoctor(null);
@@ -217,23 +205,25 @@ export default function EchipaNoastraPage() {
                 Echipa noastră
               </h1>
 
-               <p className="mt-5 mx-auto max-w-2xl text-base leading-8 text-dental-text/85 sm:text-lg">
-                 Echipa medicală Duo Dent reunește medici care lucrează în cele trei locații, cu o abordare atentă, clară și adaptată fiecărui pacient.
-               </p>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-dental-text/85 sm:text-lg">
+                Echipa medicală Duo Dent reunește medici care lucrează în cele
+                trei locații, cu o abordare atentă, clară și adaptată fiecărui
+                pacient.
+              </p>
 
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a
-                  href="#selector-locatie"
+                  href="/servicii"
                   className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-6 py-3.5 font-rounded text-base font-bold text-white shadow-lg shadow-dental-mint/20 transition hover:-translate-y-0.5 hover:bg-dental-mintDark"
                 >
-                  Vezi echipa pe locații
+                  Serviciile noastre
                   <ArrowRight size={18} />
                 </a>
                 <a
-                  href="/servicii"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-6 py-3.5 font-rounded text-base font-bold text-dental-heading transition hover:bg-dental-blue"
                 >
-                  Vezi serviciile
+                  Programează o vizită
                 </a>
               </div>
             </motion.div>
@@ -241,35 +231,31 @@ export default function EchipaNoastraPage() {
         </div>
       </header>
 
-      
-
       <section id="selector-locatie" className="px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <div className="mb-4 max-w-2xl">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
-              
-            </p>
             <h2 className="font-rounded text-3xl font-bold text-dental-heading sm:text-4xl">
-            Alege cabinetul și descoperă echipa medicală
-          </h2>
-             <p className="mt-4 text-base leading-8 text-dental-text/80 sm:text-lg">
-             Fiecare locație are propria echipă medicală, iar aici poți vedea mai ușor cine activează în cabinetul care te interesează.
-           </p>
+              Alege cabinetul și descoperă echipa medicală
+            </h2>
+            <p className="mt-4 text-base leading-8 text-dental-text/80 sm:text-lg">
+              Fiecare locație are propria echipă medicală, iar aici poți vedea
+              mai ușor cine activează în cabinetul care te interesează.
+            </p>
           </div>
 
           <div className="mb-6 md:hidden">
             <label
               htmlFor="location-select"
-              className="mb-2 block text-sm font-semibold text-dental-heading"
+              className="mb-2 block text-sm font-semibold text-dental-mint"
             >
               Selectează locația
             </label>
-            <div className="rounded-[22px] border border-dental-blueDark/10 bg-white p-2 shadow-sm">
+            <div className="rounded-[22px] border-2 border-dental-mint bg-dental-mint/5 p-1.5">
               <select
                 id="location-select"
                 value={selectedLocationSlug}
                 onChange={(event) => setSelectedLocationSlug(event.target.value)}
-                className="w-full rounded-[18px] border-0 bg-transparent px-4 py-3 text-base font-semibold text-dental-heading focus:outline-none"
+                className="w-full rounded-[18px] border-0 bg-white px-4 py-3 text-base font-bold text-dental-heading focus:outline-none focus:ring-2 focus:ring-dental-mint"
               >
                 {locations.map((location) => (
                   <option key={location.slug} value={location.slug}>
@@ -289,10 +275,10 @@ export default function EchipaNoastraPage() {
                   key={location.slug}
                   type="button"
                   onClick={() => setSelectedLocationSlug(location.slug)}
-                  className={`rounded-[24px] border px-5 py-4 text-left transition ${
+                  className={`rounded-[24px] border-2 px-5 py-4 text-left transition ${
                     isActive
-                      ? 'border-dental-mint bg-dental-mint text-white shadow-lg shadow-dental-mint/20'
-                      : 'border-dental-blueDark/10 bg-white text-dental-heading hover:bg-dental-blue'
+                      ? 'border-dental-mint bg-dental-mint text-white shadow-lg shadow-dental-mint/30'
+                      : 'border-dental-mint/30 bg-white text-dental-heading hover:border-dental-mint hover:bg-dental-mint hover:text-white'
                   }`}
                 >
                   <span className="block font-rounded text-xl font-bold">
@@ -316,7 +302,7 @@ export default function EchipaNoastraPage() {
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dental-mint">
                     Cabinet selectat
                   </p>
-                  <h3 className="mt-2 font-rounded text-3xl font-bold text-dental-heading">
+                  <h3 className="mt-2 font-rounded text-3xl font-bold text-dental-mint">
                     {selectedLocation.title}
                   </h3>
                 </div>
@@ -331,8 +317,7 @@ export default function EchipaNoastraPage() {
               </div>
 
               <div className="grid gap-6 lg:grid-cols-3">
-                 <article className="flex h-full flex-col rounded-[30px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_25px_70px_-35px_rgba(55,71,79,0.28)] sm:p-7">
-
+                <article className="flex h-full flex-col rounded-[30px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_25px_70px_-35px_rgba(55,71,79,0.28)] sm:p-7">
                   <div className="mb-5">
                     <p className="mb-2 inline-flex rounded-full bg-dental-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-dental-heading">
                       {selectedLocation.title}
@@ -341,7 +326,8 @@ export default function EchipaNoastraPage() {
                       Informații cabinet
                     </h3>
                     <p className="mt-2 text-base leading-8 text-dental-text/80">
-                      Informațiile esențiale despre cabinetul selectat, pentru o orientare mai clară.
+                      Informațiile esențiale despre cabinetul selectat, pentru o
+                      orientare mai clară.
                     </p>
                   </div>
 
@@ -442,28 +428,28 @@ export default function EchipaNoastraPage() {
                 ))}
               </div>
             </motion.div>
-           </AnimatePresence>
+          </AnimatePresence>
         </div>
       </section>
 
       <section className="px-6 pb-20">
         <div className="mx-auto max-w-6xl">
           <div className="overflow-hidden rounded-[34px] border border-dental-blueDark/10 bg-white shadow-[0_30px_90px_-35px_rgba(55,71,79,0.3)]">
-            <div className="p-8 sm:p-10 lg:p-12 text-center">
+            <div className="p-8 text-center sm:p-10 lg:p-12">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
                 Programare
               </p>
               <h2 className="mt-3 font-rounded text-3xl font-bold text-dental-heading sm:text-4xl">
                 Programează o consultație în {selectedLocation.title}
               </h2>
-                <p className="mt-4 mx-auto max-w-2xl text-base leading-8 text-dental-text/80">
-                  Dacă știi deja locația potrivită pentru tine, poți suna direct
-                  cabinetul selectat. Datele complete pentru toate clinicile
-                  rămân disponibile și în footer, fără să încărcăm vizual această
-                  pagină.
-                </p>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-dental-text/80">
+                Dacă știi deja locația potrivită pentru tine, poți suna direct
+                cabinetul selectat. Datele complete pentru toate clinicile rămân
+                disponibile și în footer, fără să încărcăm vizual această
+                pagină.
+              </p>
 
-                <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a
                   href={phoneHref(selectedLocation.phones[0])}
                   className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-6 py-3.5 font-rounded text-base font-bold text-white transition hover:bg-dental-mintDark"
@@ -486,145 +472,147 @@ export default function EchipaNoastraPage() {
       <AnimatePresence>
         {activeDoctor && (
           <motion.div
-            className="fixed inset-0 z-[80] flex items-end justify-center bg-dental-heading/60 p-3 backdrop-blur-sm sm:items-center sm:p-6"
+            className="fixed inset-0 z-[80] overflow-y-auto bg-dental-heading/60 p-3 backdrop-blur-sm sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveDoctor(null)}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.98 }}
-              transition={{ duration: 0.25 }}
-              onClick={(event) => event.stopPropagation()}
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="doctor-modal-title"
-              className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-[32px] bg-white p-5 shadow-2xl sm:p-8"
-            >
-              <button
-                type="button"
-                onClick={() => setActiveDoctor(null)}
-                className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-dental-blueDark/10 bg-white text-dental-heading transition hover:bg-dental-blue"
-                aria-label="Închide"
+            <div className="flex min-h-full items-end justify-center sm:items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 16, scale: 0.98 }}
+                transition={{ duration: 0.25 }}
+                onClick={(event) => event.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="doctor-modal-title"
+                className="relative w-full max-w-4xl rounded-[32px] bg-white p-5 shadow-2xl sm:max-h-[90vh] sm:p-8"
               >
-                <X size={18} />
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveDoctor(null)}
+                  className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-dental-blueDark/10 bg-white text-dental-heading transition hover:bg-dental-blue"
+                  aria-label="Închide"
+                >
+                  <X size={18} />
+                </button>
 
-              <div className="grid gap-8 lg:grid-cols-[340px_1fr] lg:gap-10">
-                <div>
-                  <div className="overflow-hidden rounded-[28px] border border-dental-blueDark/10 bg-white p-3">
-                    <div className="overflow-hidden rounded-[22px] bg-white">
-                      {activeDoctor.image ? (
-                        <div className="relative aspect-[4/5] w-full min-h-[320px]">
-                          <Image
-                            src={activeDoctor.image}
-                            alt={activeDoctor.name}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 340px"
-                          />
-                        </div>
-                      ) : (
-                        <div className="flex min-h-[320px] items-center justify-center">
-                          <div className="relative h-32 w-32 sm:h-36 sm:w-36">
+                <div className="grid gap-8 lg:grid-cols-[340px_1fr] lg:gap-10">
+                  <div>
+                    <div className="overflow-hidden rounded-[28px] border border-dental-blueDark/10 bg-white p-3">
+                      <div className="overflow-hidden rounded-[22px] bg-white">
+                        {activeDoctor.image ? (
+                          <div className="relative aspect-[4/5] w-full">
                             <Image
-                              src="/logo-doudent.png"
-                              alt="Duo Dent"
+                              src={activeDoctor.image}
+                              alt={activeDoctor.name}
                               fill
-                              className="object-contain"
+                              className="object-cover"
+                              sizes="(max-width: 1024px) 100vw, 340px"
                             />
                           </div>
-                        </div>
-                      )}
+                        ) : (
+                          <div className="flex min-h-[320px] items-center justify-center">
+                            <div className="relative h-32 w-32 sm:h-36 sm:w-36">
+                              <Image
+                                src="/logo-doudent.png"
+                                alt="Duo Dent"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div>
-                  <p className="inline-flex rounded-full bg-dental-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading">
-                    {selectedLocation.title}
-                  </p>
-
-                  <h3
-                    id="doctor-modal-title"
-                    className="mt-4 font-rounded text-3xl font-bold text-dental-heading sm:text-4xl"
-                  >
-                    {activeDoctor.name}
-                  </h3>
-
-                  {activeDoctor.specialty && (
-                    <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-dental-cream px-4 py-2 text-sm font-semibold text-dental-text">
-                      <User size={16} className="text-dental-mint" />
-                      {activeDoctor.specialty}
+                  <div>
+                    <p className="inline-flex rounded-full bg-dental-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading">
+                      {selectedLocation.title}
                     </p>
-                  )}
 
-                  <div className="mt-6 rounded-[28px] bg-dental-cream p-6">
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dental-mint">
-                      Prezentare
-                    </p>
-                    <p className="mt-4 text-base leading-8 text-dental-text/85">
-                      {activeDoctor.description}
-                    </p>
-                  </div>
+                    <h3
+                      id="doctor-modal-title"
+                      className="mt-4 font-rounded text-3xl font-bold text-dental-heading sm:text-4xl"
+                    >
+                      {activeDoctor.name}
+                    </h3>
 
-                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-[24px] border border-dental-blueDark/10 bg-white p-5">
-                      <div className="mb-3 flex items-center gap-2 text-dental-heading">
-                        <MapPin size={18} className="text-dental-mint" />
-                        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-dental-heading">
-                          Cabinet
-                        </p>
-                      </div>
-                      <p className="text-sm leading-7 text-dental-text">
-                        {selectedLocation.title}
-                        <br />
-                        {selectedLocation.address}
+                    {activeDoctor.specialty && (
+                      <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-dental-cream px-4 py-2 text-sm font-semibold text-dental-text">
+                        <User size={16} className="text-dental-mint" />
+                        {activeDoctor.specialty}
+                      </p>
+                    )}
+
+                    <div className="mt-6 rounded-[28px] bg-dental-cream p-6">
+                      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-dental-mint">
+                        Prezentare
+                      </p>
+                      <p className="mt-4 text-base leading-8 text-dental-text/85">
+                        {activeDoctor.description}
                       </p>
                     </div>
 
-                    <div className="rounded-[24px] border border-dental-blueDark/10 bg-white p-5">
-                      <div className="mb-3 flex items-center gap-2 text-dental-heading">
-                        <Phone size={18} className="text-dental-mint" />
-                        <p className="text-sm font-semibold uppercase tracking-[0.12em] text-dental-heading">
-                          Programări
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-[24px] border border-dental-blueDark/10 bg-white p-5">
+                        <div className="mb-3 flex items-center gap-2 text-dental-heading">
+                          <MapPin size={18} className="text-dental-mint" />
+                          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-dental-heading">
+                            Cabinet
+                          </p>
+                        </div>
+                        <p className="text-sm leading-7 text-dental-text">
+                          {selectedLocation.title}
+                          <br />
+                          {selectedLocation.address}
                         </p>
                       </div>
-                      <div className="space-y-2 text-sm leading-7 text-dental-text">
-                        {selectedLocation.phones.map((phone) => (
-                          <a
-                            key={phone}
-                            href={phoneHref(phone)}
-                            className="block transition hover:text-dental-mint"
-                          >
-                            {phone}
-                          </a>
-                        ))}
+
+                      <div className="rounded-[24px] border border-dental-blueDark/10 bg-white p-5">
+                        <div className="mb-3 flex items-center gap-2 text-dental-heading">
+                          <Phone size={18} className="text-dental-mint" />
+                          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-dental-heading">
+                            Programări
+                          </p>
+                        </div>
+                        <div className="space-y-2 text-sm leading-7 text-dental-text">
+                          {selectedLocation.phones.map((phone) => (
+                            <a
+                              key={phone}
+                              href={phoneHref(phone)}
+                              className="block transition hover:text-dental-mint"
+                            >
+                              {phone}
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={phoneHref(selectedLocation.phones[0])}
-                      className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-dental-mintDark"
-                    >
-                      <Phone size={16} />
-                      Sună cabinetul
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => setActiveDoctor(null)}
-                      className="inline-flex items-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
-                    >
-                      Închide
-                    </button>
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <a
+                        href={phoneHref(selectedLocation.phones[0])}
+                        className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-dental-mintDark"
+                      >
+                        <Phone size={16} />
+                        Sună cabinetul
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => setActiveDoctor(null)}
+                        className="inline-flex items-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
+                      >
+                        Închide
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

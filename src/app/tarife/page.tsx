@@ -164,16 +164,16 @@ export default function TarifePage() {
           <div className="mb-6 md:hidden">
             <label
               htmlFor="cabinet-select"
-              className="mb-2 block text-sm font-semibold uppercase tracking-[0.14em] text-dental-heading/70"
+              className="mb-2 block text-sm font-semibold uppercase tracking-[0.14em] text-dental-mint"
             >
               Alege cabinetul
             </label>
-            <div className="relative">
+            <div className="relative rounded-[22px] border-2 border-dental-mint bg-dental-mint/5 p-1.5">
               <select
                 id="cabinet-select"
                 value={selectedClinic.id}
                 onChange={(event) => onClinicChange(event.target.value as ClinicId)}
-                className="w-full appearance-none rounded-2xl border border-dental-blueDark/50 bg-white px-4 py-4 pr-12 font-rounded text-base font-bold text-dental-heading shadow-sm outline-none transition focus:border-dental-mint focus:ring-2 focus:ring-dental-mint/20"
+                className="w-full appearance-none rounded-[18px] border-0 bg-white px-4 py-3 pr-12 font-rounded text-base font-bold text-dental-heading outline-none transition focus:ring-2 focus:ring-dental-mint"
               >
                 {tariffData.map((clinic) => (
                   <option key={clinic.id} value={clinic.id}>
@@ -183,7 +183,7 @@ export default function TarifePage() {
               </select>
               <ChevronDown
                 size={18}
-                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-dental-heading/60"
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-dental-mint"
               />
             </div>
           </div>
@@ -197,10 +197,10 @@ export default function TarifePage() {
                   key={clinic.id}
                   type="button"
                   onClick={() => onClinicChange(clinic.id)}
-                  className={`inline-flex items-center gap-3 rounded-2xl px-5 py-4 font-rounded text-base font-bold transition ${
+                  className={`inline-flex items-center gap-3 rounded-2xl border-2 px-5 py-4 font-rounded text-base font-bold transition ${
                     isActive
-                      ? 'bg-dental-mint text-white shadow-lg shadow-dental-mint/20'
-                      : 'border border-dental-blueDark/50 bg-white text-dental-heading hover:-translate-y-0.5 hover:border-dental-mint/40 hover:bg-dental-blue/40'
+                      ? 'border-dental-mint bg-dental-mint text-white shadow-lg shadow-dental-mint/30'
+                      : 'border-dental-mint/30 bg-white text-dental-heading hover:border-dental-mint hover:bg-dental-mint hover:text-white'
                   }`}
                 >
                   <Building2 size={18} />
@@ -237,16 +237,16 @@ export default function TarifePage() {
               <div className="w-full lg:max-w-sm">
                 <label
                   htmlFor="category-select"
-                  className="mb-2 block text-sm font-semibold uppercase tracking-[0.14em] text-dental-heading/70"
+                  className="mb-2 block text-sm font-semibold uppercase tracking-[0.14em] text-dental-mint"
                 >
                   Alege categoria de servicii
                 </label>
-                <div className="relative">
+                <div className="relative rounded-[22px] border-2 border-dental-mint bg-dental-mint/5 p-1.5">
                   <select
                     id="category-select"
                     value={selectedCategory.id}
                     onChange={(event) => setSelectedCategoryId(event.target.value as CategoryId)}
-                    className="w-full appearance-none rounded-2xl border border-dental-blueDark/50 bg-dental-cream px-4 py-4 pr-12 font-rounded text-base font-bold text-dental-heading outline-none transition focus:border-dental-mint focus:ring-2 focus:ring-dental-mint/20"
+                    className="w-full appearance-none rounded-[18px] border-0 bg-white px-4 py-3 pr-12 font-rounded text-base font-bold text-dental-heading outline-none transition focus:ring-2 focus:ring-dental-mint"
                   >
                     {selectedClinic.categories.map((category) => (
                       <option key={category.id} value={category.id}>
@@ -256,7 +256,7 @@ export default function TarifePage() {
                   </select>
                   <ChevronDown
                     size={18}
-                    className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-dental-heading/60"
+                    className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-dental-mint"
                   />
                 </div>
               </div>

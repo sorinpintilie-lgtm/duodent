@@ -231,22 +231,36 @@ export default function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10 bg-dental-heading">
-  <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-gray-400 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-    <p>
-      © {new Date().getFullYear()} Clinica Duo Dent. Toate drepturile
-      rezervate.
-    </p>
-    <a
-      href="https://sky.ro"
-      target="_blank"
-      rel="noreferrer"
-      className="inline-flex items-center gap-2 transition hover:text-white"
-    >
-      <span>Crafted in the clouds by</span>
-      <Image src="/skyro.png" alt="SkyRo" width={78} height={24} className="h-6 w-auto" />
-    </a>
-  </div>
-</div>
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-gray-400 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <p>
+              © {new Date().getFullYear()} Clinica Duo Dent. Toate drepturile
+              rezervate.
+            </p>
+            <a href="/drepturi" className="hover:text-white">
+              Date personale
+            </a>
+            <a href="/politica-de-confidentialitate" className="hover:text-white">
+              Confidențialitate
+            </a>
+            <a href="/politica-de-cookies" className="hover:text-white">
+              Cookies
+            </a>
+            <a href="/termeni-si-conditii" className="hover:text-white">
+              Termeni
+            </a>
+          </div>
+          <a
+            href="https://sky.ro"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 transition hover:text-white"
+          >
+            <span>Crafted in the clouds by</span>
+            <Image src="/skyro.png" alt="SkyRo" width={78} height={24} className="h-6 w-auto" />
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
