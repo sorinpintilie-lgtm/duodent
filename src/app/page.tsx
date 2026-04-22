@@ -204,7 +204,7 @@ export default function DuoDentHome() {
       <header className="relative hidden min-h-screen items-center overflow-hidden md:flex">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-dentist-p.jpg"
+            src="/hero-dentist.jpg"
             alt="Cabinet Duo Dent"
             fill
             className="object-cover object-center"
