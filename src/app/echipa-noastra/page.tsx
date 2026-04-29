@@ -21,6 +21,11 @@ type LocationItem = {
   doctors: Doctor[];
 };
 
+type ActiveDoctorState = {
+  doctor: Doctor;
+  location: LocationItem;
+};
+
 const locations: LocationItem[] = [
   {
     slug: 'bucuresti',
@@ -151,7 +156,7 @@ function phoneHref(phone: string) {
 
 export default function EchipaNoastraPage() {
   const [selectedLocationSlug, setSelectedLocationSlug] = useState('bucuresti');
-  const [activeDoctor, setActiveDoctor] = useState<Doctor | null>(null);
+  const [activeDoctorState, setActiveDoctorState] = useState<ActiveDoctorState | null>(null);
 
   const selectedLocation = useMemo(
     () =>
@@ -160,8 +165,12 @@ export default function EchipaNoastraPage() {
     [selectedLocationSlug]
   );
 
+  // Snapshot of the location frozen at click time — independent of the tab switcher
+  const activeDoctor = activeDoctorState?.doctor ?? null;
+  const activeLocation = activeDoctorState?.location ?? selectedLocation;
+
   useEffect(() => {
-    if (!activeDoctor) {
+    if (!activeDoctorState) {
       return;
     }
 
@@ -169,7 +178,7 @@ export default function EchipaNoastraPage() {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setActiveDoctor(null);
+        setActiveDoctorState(null);
       }
     };
 
@@ -180,7 +189,7 @@ export default function EchipaNoastraPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [activeDoctor]);
+  }, [activeDoctorState]);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
@@ -417,7 +426,7 @@ export default function EchipaNoastraPage() {
                     <div className="mt-auto pt-3">
                       <button
                         type="button"
-                        onClick={() => setActiveDoctor(doctor)}
+                        onClick={() => setActiveDoctorState({ doctor, location: selectedLocation })}
                         className="inline-flex items-center gap-2 rounded-2xl bg-dental-heading px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-[#2d3d44]"
                       >
                         Vezi detalii
@@ -470,13 +479,13 @@ export default function EchipaNoastraPage() {
       </section>
 
       <AnimatePresence>
-        {activeDoctor && (
+        {activeDoctorState && (
           <motion.div
             className="fixed inset-0 z-[80] overflow-y-auto bg-dental-heading/60 p-3 backdrop-blur-sm sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setActiveDoctor(null)}
+            onClick={() => setActiveDoctorState(null)}
           >
             <div className="flex min-h-full items-end justify-center sm:items-center">
               <motion.div
@@ -492,7 +501,7 @@ export default function EchipaNoastraPage() {
               >
                 <button
                   type="button"
-                  onClick={() => setActiveDoctor(null)}
+                  onClick={() => setActiveDoctorState(null)}
                   className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-dental-blueDark/10 bg-white text-dental-heading transition hover:bg-dental-blue"
                   aria-label="Închide"
                 >
@@ -503,7 +512,7 @@ export default function EchipaNoastraPage() {
                   <div>
                     <div className="overflow-hidden rounded-[28px] border border-dental-blueDark/10 bg-white p-3">
                       <div className="overflow-hidden rounded-[22px] bg-white">
-                        {activeDoctor.image ? (
+                        {activeDoctor?.image ? (
                           <div className="relative aspect-[4/5] w-full">
                             <Image
                               src={activeDoctor.image}
@@ -531,17 +540,17 @@ export default function EchipaNoastraPage() {
 
                   <div>
                     <p className="inline-flex rounded-full bg-dental-blue px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading">
-                      {selectedLocation.title}
+                      {activeLocation.title}
                     </p>
 
                     <h3
                       id="doctor-modal-title"
                       className="mt-4 font-rounded text-3xl font-bold text-dental-heading sm:text-4xl"
                     >
-                      {activeDoctor.name}
+                      {activeDoctor?.name}
                     </h3>
 
-                    {activeDoctor.specialty && (
+                    {activeDoctor?.specialty && (
                       <p className="mt-3 inline-flex items-center gap-2 rounded-full bg-dental-cream px-4 py-2 text-sm font-semibold text-dental-text">
                         <User size={16} className="text-dental-mint" />
                         {activeDoctor.specialty}
@@ -553,7 +562,7 @@ export default function EchipaNoastraPage() {
                         Prezentare
                       </p>
                       <p className="mt-4 text-base leading-8 text-dental-text/85">
-                        {activeDoctor.description}
+                        {activeDoctor?.description}
                       </p>
                     </div>
 
@@ -566,9 +575,9 @@ export default function EchipaNoastraPage() {
                           </p>
                         </div>
                         <p className="text-sm leading-7 text-dental-text">
-                          {selectedLocation.title}
+                          {activeLocation.title}
                           <br />
-                          {selectedLocation.address}
+                          {activeLocation.address}
                         </p>
                       </div>
 
@@ -580,7 +589,7 @@ export default function EchipaNoastraPage() {
                           </p>
                         </div>
                         <div className="space-y-2 text-sm leading-7 text-dental-text">
-                          {selectedLocation.phones.map((phone) => (
+                          {activeLocation.phones.map((phone) => (
                             <a
                               key={phone}
                               href={phoneHref(phone)}
@@ -595,7 +604,7 @@ export default function EchipaNoastraPage() {
 
                     <div className="mt-8 flex flex-wrap gap-3">
                       <a
-                        href={phoneHref(selectedLocation.phones[0])}
+                        href={phoneHref(activeLocation.phones[0])}
                         className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-dental-mintDark"
                       >
                         <Phone size={16} />
@@ -603,7 +612,7 @@ export default function EchipaNoastraPage() {
                       </a>
                       <button
                         type="button"
-                        onClick={() => setActiveDoctor(null)}
+                        onClick={() => setActiveDoctorState(null)}
                         className="inline-flex items-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
                       >
                         Închide
