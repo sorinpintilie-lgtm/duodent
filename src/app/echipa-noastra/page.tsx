@@ -47,13 +47,6 @@ const locations: LocationItem[] = [
         image: '/images/echipa/mihaila-ancuta.jpg',
       },
       {
-        name: 'Georgiana Dumitru',
-        specialty: 'Asistent medical',
-        description:
-          'Georgiana Dumitru face parte din echipa Duo Dent, asigurând suportul necesar în cabinet și ajutând la buna desfășurare a tratamentelor. Este parte importantă a echipei, contribuind la confortul și siguranța pacienților.',
-        image: '/images/echipa/georgiana-dumitru.jpeg',
-      },
-      {
         name: 'Popa Titu-Răzvan',
         specialty: 'Manager general',
         description:
@@ -133,6 +126,13 @@ const locations: LocationItem[] = [
         description:
           'Veronica Sârbu asigură suportul necesar în cabinet, ajutând la organizare și la buna desfășurare a tratamentelor. Este parte importantă a echipei, contribuind la confortul și siguranța pacienților.',
         image: '/images/echipa/veronica-sarbu.jpg',
+      },
+      {
+        name: 'Georgiana Dumitru',
+        specialty: 'Asistent medical',
+        description:
+          'Georgiana Dumitru face parte din echipa Duo Dent, asigurând suportul necesar în cabinet și ajutând la buna desfășurare a tratamentelor. Este parte importantă a echipei, contribuind la confortul și siguranța pacienților.',
+        image: '/images/echipa/georgiana-dumitru.jpeg',
       },
       {
         name: 'Cătălin Vasile',
