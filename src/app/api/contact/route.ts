@@ -14,7 +14,6 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    // Honeypot anti-spam
     if (body.website && String(body.website).trim()) {
       return NextResponse.json({
         success: true,
