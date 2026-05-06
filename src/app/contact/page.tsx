@@ -30,10 +30,10 @@ type RequestTypeOption = {
 };
 
 type FormValues = {
-  fullName: string;
+  name: string;
   phone: string;
   email: string;
-  clinic: string;
+  location: string;
   requestType: string;
   message: string;
   gdprAccepted: boolean;
@@ -87,10 +87,10 @@ const requestTypes: RequestTypeOption[] = [
 ];
 
 const initialFormValues: FormValues = {
-  fullName: '',
+  name: '',
   phone: '',
   email: '',
-  clinic: '',
+  location: '',
   requestType: '',
   message: '',
   gdprAccepted: false,
@@ -103,8 +103,8 @@ function phoneHref(phone: string) {
 function getValidationErrors(values: FormValues): FormErrors {
   const errors: FormErrors = {};
 
-  if (!values.fullName.trim()) {
-    errors.fullName = 'Te rugăm să completezi numele și prenumele.';
+  if (!values.name.trim()) {
+    errors.name = 'Te rugăm să completezi numele și prenumele.';
   }
 
   const normalizedPhone = values.phone.replace(/[^\d+]/g, '');
@@ -118,8 +118,8 @@ function getValidationErrors(values: FormValues): FormErrors {
     errors.email = 'Adresa de email nu pare validă.';
   }
 
-  if (!values.clinic) {
-    errors.clinic = 'Te rugăm să alegi cabinetul dorit.';
+  if (!values.location) {
+    errors.location = 'Te rugăm să alegi cabinetul dorit.';
   }
 
   if (!values.requestType) {
@@ -275,8 +275,8 @@ export default function ContactPage() {
   const processCardsScroll = useScrollDots(3);
 
   const selectedClinic = useMemo(
-    () => clinics.find((clinic) => clinic.id === formValues.clinic),
-    [formValues.clinic]
+    () => clinics.find((clinic) => clinic.id === formValues.location),
+    [formValues.location]
   );
 
   const onFieldChange = (
@@ -326,7 +326,13 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formValues),
+        body: JSON.stringify({
+          name: formValues.name,
+          phone: formValues.phone,
+          email: formValues.email,
+          location: formValues.location,
+          message: formValues.message,
+        }),
       });
 
       if (!response.ok) {
@@ -496,21 +502,21 @@ export default function ContactPage() {
                 <form onSubmit={onSubmit} noValidate>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="sm:col-span-1">
-                      <FieldLabel htmlFor="fullName">Nume și prenume</FieldLabel>
+                      <FieldLabel htmlFor="name">Nume și prenume</FieldLabel>
                       <input
-                        id="fullName"
-                        name="fullName"
+                        id="name"
+                        name="name"
                         type="text"
                         autoComplete="name"
-                        value={formValues.fullName}
+                        value={formValues.name}
                         onChange={onFieldChange}
                         className="w-full rounded-[18px] border border-dental-blueDark/10 bg-white px-4 py-3.5 text-base text-dental-heading outline-none transition placeholder:text-dental-body/60 focus:border-dental-mint focus:ring-4 focus:ring-dental-mint/10"
                         placeholder="Ex. Andreea Popescu"
-                        aria-invalid={Boolean(errors.fullName)}
-                        aria-describedby={errors.fullName ? 'fullName-error' : undefined}
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby={errors.name ? 'name-error' : undefined}
                       />
-                      <div id="fullName-error">
-                        <FieldError message={errors.fullName} />
+                      <div id="name-error">
+                        <FieldError message={errors.name} />
                       </div>
                     </div>
 
@@ -561,16 +567,16 @@ export default function ContactPage() {
                     </div>
 
                     <div className="sm:col-span-1">
-                      <FieldLabel htmlFor="clinic">Cabinet dorit</FieldLabel>
+                      <FieldLabel htmlFor="location">Cabinet dorit</FieldLabel>
                       <div className="relative">
                         <select
-                          id="clinic"
-                          name="clinic"
-                          value={formValues.clinic}
+                          id="location"
+                          name="location"
+                          value={formValues.location}
                           onChange={onFieldChange}
                           className="w-full appearance-none rounded-[18px] border border-dental-blueDark/10 bg-white px-4 py-3.5 pr-12 text-base text-dental-heading outline-none transition focus:border-dental-mint focus:ring-4 focus:ring-dental-mint/10"
-                          aria-invalid={Boolean(errors.clinic)}
-                          aria-describedby={errors.clinic ? 'clinic-error' : undefined}
+                          aria-invalid={Boolean(errors.location)}
+                          aria-describedby={errors.location ? 'location-error' : undefined}
                         >
                           <option value="">Selectează cabinetul</option>
                           {clinics.map((clinic) => (
@@ -581,8 +587,8 @@ export default function ContactPage() {
                         </select>
                         <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-dental-body/70" />
                       </div>
-                      <div id="clinic-error">
-                        <FieldError message={errors.clinic} />
+                      <div id="location-error">
+                        <FieldError message={errors.location} />
                       </div>
                     </div>
 
@@ -631,28 +637,30 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="mt-6 rounded-[24px] border border-dental-blueDark/10 bg-dental-blue/30 p-4 sm:p-5">
-                    <label className="flex items-start gap-3">
-                      <input
-                        id="gdprAccepted"
-                        name="gdprAccepted"
-                        type="checkbox"
-                        checked={formValues.gdprAccepted}
-                        onChange={onFieldChange}
-                        className="mt-1 h-4 w-4 rounded border-dental-blueDark/20 text-dental-mint focus:ring-dental-mint/30"
-                        aria-invalid={Boolean(errors.gdprAccepted)}
-                        aria-describedby={errors.gdprAccepted ? 'gdpr-error' : 'gdpr-helper'}
-                      />
-                      <span className="text-sm leading-6 text-dental-body">
-                        {TEMPORARY_GDPR_LABEL}
-                        <span id="gdpr-helper" className="mt-1 block text-dental-body/80">
+                    <div className="mt-6 rounded-[24px] border border-dental-blueDark/10 bg-dental-blue/30 p-4 sm:p-5">
+                      <label className="flex items-start gap-3">
+                        <input
+                          id="gdprAccepted"
+                          name="gdprAccepted"
+                          type="checkbox"
+                          checked={formValues.gdprAccepted}
+                          onChange={onFieldChange}
+                          className="mt-1 h-4 w-4 rounded border-dental-blueDark/20 text-dental-mint focus:ring-dental-mint/30"
+                          aria-invalid={Boolean(errors.gdprAccepted)}
+                          aria-describedby={errors.gdprAccepted ? 'gdpr-error' : 'gdpr-helper'}
+                        />
+                        <span className="text-sm leading-6 text-dental-body">
+                          {TEMPORARY_GDPR_LABEL}
+                          <span id="gdpr-helper" className="mt-1 block text-dental-body/80">
+                          </span>
                         </span>
-                      </span>
-                    </label>
-                    <div id="gdpr-error">
-                      <FieldError message={errors.gdprAccepted} />
+                      </label>
+                      <div id="gdpr-error">
+                        <FieldError message={errors.gdprAccepted} />
+                      </div>
                     </div>
-                  </div>
+
+                    <input type="text" name="website" style={{ display: 'none' }} />
 
                   <div className="mt-6 flex flex-col gap-4 border-t border-dental-blueDark/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
                     <div className="min-h-[24px]" aria-live="polite">

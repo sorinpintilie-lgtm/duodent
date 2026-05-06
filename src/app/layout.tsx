@@ -1,5 +1,6 @@
 import './globals.css';
 import { Nunito, Open_Sans } from 'next/font/google';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
@@ -21,6 +22,39 @@ export const viewport = {
   initialScale: 1.0,
 };
 
+export const metadata: Metadata = {
+  metadataBase: new URL("https://duodent.ro"),
+  title: {
+    default:
+      "Duo Dent | Clinică stomatologică în București, Belciugatele și Valea Călugărească",
+    template: "%s | Duo Dent",
+  },
+  description:
+    "Duo Dent oferă servicii stomatologice pentru copii și adulți în București, Belciugatele și Valea Călugărească.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Duo Dent | Clinică stomatologică în 3 locații",
+    description:
+      "Servicii stomatologice pentru copii și adulți în București, Belciugatele și Valea Călugărească.",
+    url: "https://duodent.ro",
+    siteName: "Duo Dent",
+    locale: "ro_RO",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Duo Dent | Clinică stomatologică în 3 locații",
+    description:
+      "Servicii stomatologice pentru copii și adulți în București, Belciugatele și Valea Călugărească.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ro">
@@ -28,7 +62,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${nunito.variable} ${openSans.variable} bg-dental-cream font-body text-dental-text antialiased`}
       >
         <SiteHeader />
-        {children}
+        <div className="pt-20">
+          {children}
+        </div>
         <SiteFooter />
       </body>
     </html>

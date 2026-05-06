@@ -37,11 +37,22 @@ export function generateMetadata({ params }: ServicePageProps): Metadata {
     };
   }
 
+  const title = service.seoTitle ?? `${service.title} | Duo Dent`;
+  const description =
+    service.seoDescription ??
+    `${service.title} este disponibil în clinicile Duo Dent selectate, cu afișare clară a locațiilor și a prețurilor orientative.`;
+
   return {
-    title: service.seoTitle ?? `${service.title} | Duo Dent`,
-    description:
-      service.seoDescription ??
-      `${service.title} este disponibil în clinicile Duo Dent selectate, cu afișare clară a locațiilor și a prețurilor orientative.`,
+    title,
+    description,
+    alternates: {
+      canonical: `/servicii/${params.category}/${params.slug}`,
+    },
+    openGraph: {
+      title: service.title,
+      description,
+      url: `https://duodent.ro/servicii/${params.category}/${params.slug}`,
+    },
   };
 }
 
