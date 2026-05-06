@@ -302,7 +302,7 @@ export default function DespreNoiPage() {
   }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
+    <main className="bg-dental-cream font-body text-dental-text">
       <section className="relative isolate overflow-hidden pt-8 sm:pt-12">
         <div className="absolute inset-0 pointer-events-none">
           <Image
@@ -373,7 +373,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20" data-aos="fade-up">
+      <section className="bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Povestea Duo Dent"
@@ -773,7 +773,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="pb-16 pt-8 sm:pb-20 sm:pt-10" data-aos="fade-up">
+      <section className="pb-16 pt-8 sm:pb-20 sm:pt-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[36px] bg-dental-heading shadow-2xl">
             <div className="absolute inset-0 pointer-events-none">

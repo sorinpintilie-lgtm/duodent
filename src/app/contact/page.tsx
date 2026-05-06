@@ -1,9 +1,10 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import { ChangeEvent, FormEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useDesktopMotion } from '@/hooks/use-desktop-motion';
+
+
 import {
   ArrowRight,
   CalendarDays,
@@ -280,7 +281,7 @@ export default function ContactPage() {
     [formValues.location]
   );
 
-  const enableMotion = useDesktopMotion();
+
 
   const onFieldChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -378,10 +379,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(94,177,168,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(126,169,219,0.18),transparent_30%)] pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <motion.div
-            initial={enableMotion ? { opacity: 0, y: 24 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
+          <div
             className="max-w-3xl"
           >
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mintDark/85">
@@ -404,19 +402,15 @@ export default function ContactPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="border-b border-dental-blueDark/10 bg-white" data-aos="fade-up">
+      <section className="border-b border-dental-blueDark/10 bg-white">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.4 }}
-            className="rounded-[28px] border border-dental-blueDark/10 bg-dental-blue/35 p-4 shadow-sm sm:p-6"
-          >
+              <div
+                className="rounded-[32px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] sm:p-8"
+              >
             <div className="overflow-x-auto scrollbar-hide scroll-snap-x md:overflow-visible">
               <div
                 ref={processCardsScroll.containerRef}
@@ -448,11 +442,11 @@ export default function ContactPage() {
               itemCount={processCardsScroll.itemCount}
               onSelect={processCardsScroll.scrollToIndex}
             />
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <section id="formular-contact" className="bg-dental-blue/40" data-aos="fade-up">
+      <section id="formular-contact" className="bg-dental-blue/40">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dental-mintDark/85">
@@ -469,11 +463,7 @@ export default function ContactPage() {
 
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_380px] lg:items-start">
             <div className="order-1 lg:order-1">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4 }}
+              <div
                 className="mb-6 rounded-[30px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] lg:hidden"
               >
                 <h3 className="font-rounded text-xl font-bold text-dental-heading">
@@ -493,15 +483,11 @@ export default function ContactPage() {
                     <p>Primești un răspuns sau o orientare în funcție de tipul solicitării trimise.</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4 }}
-                className="rounded-[32px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] sm:p-8"
-              >
+          <div
+            className="rounded-[28px] border border-dental-blueDark/10 bg-dental-blue/35 p-4 shadow-sm sm:p-6"
+          >
                 <form onSubmit={onSubmit} noValidate>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="sm:col-span-1">
@@ -688,14 +674,10 @@ export default function ContactPage() {
                     </button>
                   </div>
                 </form>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.aside
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: 0.05 }}
+            <aside
               className="order-2 hidden space-y-5 lg:sticky lg:top-24 lg:block"
             >
               <div className="rounded-[30px] border border-dental-blueDark/10 bg-white p-6 shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)]">
@@ -743,7 +725,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </motion.aside>
+            </aside>
           </div>
         </div>
       </section>

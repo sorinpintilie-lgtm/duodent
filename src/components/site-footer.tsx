@@ -76,7 +76,7 @@ export default function SiteFooter() {
   return (
     <footer id="clinici" className="border-t border-white/10 bg-dental-heading text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-2xl" data-aos="fade-up">
+        <div className="mb-10 max-w-2xl">
           <p className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
             Clinicile Duo Dent
           </p>
@@ -98,8 +98,7 @@ export default function SiteFooter() {
                 key={location.slug}
                 className="h-[420px]"
                 style={{ perspective: '1200px' }}
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
+
               >
                 <div
                   className="relative h-full w-full rounded-[28px] transition-transform duration-500"

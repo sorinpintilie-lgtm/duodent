@@ -12,10 +12,13 @@ body {
     backdrop-filter: none !important;
   }
 
-  html,
-  body {
+  html {
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  body {
+    overflow-x: hidden;
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
   }

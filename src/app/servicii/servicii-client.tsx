@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 import { ArrowRight, ChevronDown, ClipboardList, Stethoscope } from 'lucide-react';
 
 import {
@@ -31,21 +29,14 @@ export default function ServiciiClientPage() {
     [selectedCategoryId]
   );
 
-  const enableMotion = useDesktopMotion();
-
   return (
-    <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
+    <main className="bg-dental-cream font-body text-dental-text">
       <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-16 pt-8 md:pb-20 md:pt-16">
         <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/3 -translate-y-1/3 rounded-full bg-white/80 blur-3xl" />
         <div className="absolute right-0 top-0 h-72 w-72 translate-x-1/4 -translate-y-1/3 rounded-full bg-dental-mint/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl">
-          <motion.div
-            initial={enableMotion ? { opacity: 0, y: 24 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
-            className="mx-auto flex max-w-3xl flex-col items-center text-center"
-          >
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
               <Stethoscope size={14} className="text-dental-mint" />
               Serviciile noastre
@@ -74,7 +65,7 @@ export default function ServiciiClientPage() {
                 Vezi tarifele
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </header>
 
@@ -134,13 +125,7 @@ export default function ServiciiClientPage() {
           </div>
 
           {selectedCategory && (
-            <motion.section
-              key={selectedCategory.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="space-y-6"
-            >
+            <section className="space-y-6">
               <div className="rounded-[28px] border border-dental-blue/50 bg-white p-6 shadow-sm md:p-8">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div className="space-y-3">
@@ -216,12 +201,12 @@ export default function ServiciiClientPage() {
                   </article>
                 ))}
               </div>
-            </motion.section>
+            </section>
           )}
         </div>
       </section>
 
-      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 px-6 py-14 lg:py-16" data-aos="fade-up">
+      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 px-6 py-14 lg:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[32px] border border-dental-blueDark/10 bg-white px-6 py-8 text-center shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] sm:px-8 sm:py-10">
             <div className="mx-auto max-w-3xl space-y-3">

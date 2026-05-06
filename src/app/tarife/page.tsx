@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 import {
   ArrowRight,
   Building2,
@@ -99,8 +97,6 @@ export default function TarifePage() {
 
   const availableCategories = selectedClinic.categories;
 
-  const enableMotion = useDesktopMotion();
-
   const selectedCategory = useMemo(() => {
     if (!availableCategories.some((category) => category.id === selectedCategoryId)) {
       return availableCategories[0];
@@ -134,18 +130,13 @@ export default function TarifePage() {
   };
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
+    <main className="bg-dental-cream font-body text-dental-text">
       <section className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-14 pt-8 md:pb-18 md:pt-16">
         <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/3 -translate-y-1/3 rounded-full bg-white/80 blur-3xl" />
         <div className="absolute right-0 top-0 h-72 w-72 translate-x-1/4 -translate-y-1/3 rounded-full bg-dental-mint/10 blur-3xl" />
 
         <div className="relative mx-auto max-w-6xl">
-          <motion.div
-            initial={enableMotion ? { opacity: 0, y: 24 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
-            className="mx-auto flex max-w-3xl flex-col items-center text-center"
-          >
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
               <ClipboardList size={14} className="text-dental-mint" />
               Tarife
@@ -158,7 +149,7 @@ export default function TarifePage() {
             <p className="max-w-2xl text-base leading-7 text-dental-text/80 md:text-lg md:leading-8">
               Alege cabinetul și categoria dorită pentru a vedea rapid informațiile de preț.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -266,13 +257,7 @@ export default function TarifePage() {
             </div>
           </div>
 
-          <motion.div
-            key={`${selectedClinic.id}-${selectedCategory.id}`}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.24 }}
-            className="overflow-hidden rounded-[32px] border border-dental-blue/50 bg-white shadow-sm"
-          >
+          <div className="overflow-hidden rounded-[32px] border border-dental-blue/50 bg-white shadow-sm">
             <div className="border-b border-dental-blue/50 bg-gradient-to-r from-dental-blue/60 to-white px-6 py-6 md:px-8">
               <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
@@ -370,7 +355,7 @@ export default function TarifePage() {
                 </ul>
               </div>
             )}
-          </motion.div>
+          </div>
 
           <div className="mt-6 rounded-[28px] border border-dental-blue/60 bg-white p-6 shadow-sm md:p-8">
             <div className="flex items-start gap-4">

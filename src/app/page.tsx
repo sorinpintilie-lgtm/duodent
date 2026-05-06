@@ -1,9 +1,10 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useDesktopMotion } from '@/hooks/use-desktop-motion';
+
+
 import {
   ArrowRight,
   Baby,
@@ -110,20 +111,14 @@ export default function DuoDentHome() {
     }
   }, []);
 
-  const enableMotion = useDesktopMotion();
-
   return (
-    <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
+    <main className="bg-dental-cream font-body text-dental-text">
       {/* HERO MOBILE */}
       <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-14 pt-8 md:hidden">
         <div className="absolute right-0 top-0 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-3xl" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+        <div
           className="relative z-10"
-          data-aos="fade-up"
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
             <Microscope size={14} className="text-dental-mint" />
@@ -141,7 +136,7 @@ export default function DuoDentHome() {
           </p>
 
           <div className="relative mb-7">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl" data-aos="zoom-in">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl">
               <Image
                 src="/hero-dentist.jpg"
                 alt="Echipa Duo Dent"
@@ -201,7 +196,7 @@ export default function DuoDentHome() {
               <p className="mt-1 text-xs text-dental-text/70">laborator propriu</p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </header>
 
       {/* HERO DESKTOP */}
@@ -219,11 +214,8 @@ export default function DuoDentHome() {
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <motion.div
-              initial={enableMotion ? { opacity: 0, x: -28 } : false}
-              animate={{ opacity: 1, x: 0 }}
-              transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
-              className="max-w-2xl"
+            <div
+              className="relative z-10"
             >
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
                 <Microscope size={14} className="text-dental-mint" />
@@ -276,7 +268,7 @@ export default function DuoDentHome() {
                   <p className="mt-1 text-sm text-dental-text/70">laborator propriu</p>
                 </div>
               </div>
-            </motion.div>
+        </div>
 
             <div className="hidden lg:block" />
           </div>
@@ -284,7 +276,7 @@ export default function DuoDentHome() {
       </header>
 
       {/* WHY US */}
-      <section id="de-ce-noi" className="bg-white px-6 py-24" data-aos="fade-up">
+      <section id="de-ce-noi" className="bg-white px-6 py-24">
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
             De ce Duo Dent
@@ -303,8 +295,6 @@ export default function DuoDentHome() {
             <div
               key={item.title}
               className="rounded-3xl border border-dental-blue/50 bg-dental-cream p-8 text-center transition hover:-translate-y-1 hover:shadow-lg"
-              data-aos="fade-up"
-              data-aos-delay={index * 150}
             >
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-dental-blue text-dental-mint">
                 {item.icon}
@@ -319,7 +309,7 @@ export default function DuoDentHome() {
       </section>
 
       {/* SERVICES */}
-      <section id="servicii" className="bg-dental-cream px-6 py-24" data-aos="fade-up">
+      <section id="servicii" className="bg-dental-cream px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
@@ -334,14 +324,11 @@ export default function DuoDentHome() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <div
                 key={service.title}
                 className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
-
               >
                 <div className="shrink-0 rounded-xl bg-dental-blue p-3 text-dental-heading">
                   {service.icon}
@@ -385,7 +372,7 @@ export default function DuoDentHome() {
       {/* CTA PRIMARY */}
       <section className="bg-dental-cream px-6 pb-24">
         <div className="mx-auto max-w-6xl">
-          <div className="overflow-hidden rounded-[2rem] border border-dental-blue/50 bg-white shadow-sm" data-aos="fade-up">
+          <div className="overflow-hidden rounded-[2rem] border border-dental-blue/50 bg-white shadow-sm">
             <div className="flex flex-col items-center text-center px-8 py-10 md:px-12 md:py-12">
               <div className="max-w-2xl">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
@@ -428,7 +415,7 @@ export default function DuoDentHome() {
         className="relative overflow-hidden bg-dental-blue/30 px-6 py-24"
       >
         <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
-          <div data-aos="fade-right">
+          <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-dental-mint px-4 py-1 text-xs font-bold uppercase text-white">
               <Baby size={16} />
               Stomatologie pediatrică
@@ -464,7 +451,7 @@ export default function DuoDentHome() {
             </a>
           </div>
 
-          <div className="rounded-[2rem] bg-white p-4 shadow-xl" data-aos="fade-left">
+          <div className="rounded-[2rem] bg-white p-4 shadow-xl">
             <div className="relative aspect-square overflow-hidden rounded-[1.5rem] bg-dental-cream">
               <Image
                 src="/kids-dentist.jpg"
@@ -478,7 +465,7 @@ export default function DuoDentHome() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-white px-6 py-24" data-aos="fade-up">
+      <section className="bg-white px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
@@ -552,8 +539,6 @@ export default function DuoDentHome() {
               <div
                 key={testimonial.name}
                 className="rounded-2xl border border-dental-blue bg-dental-cream p-8"
-                data-aos="fade-up"
-                data-aos-delay={index * 200}
               >
                 <div className="mb-4 flex text-yellow-400">
                   <Star fill="currentColor" />
