@@ -142,6 +142,7 @@ export default function TarifePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
             className="mx-auto flex max-w-3xl flex-col items-center text-center"
+            data-aos="fade-up"
           >
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
               <ClipboardList size={14} className="text-dental-mint" />
@@ -159,7 +160,7 @@ export default function TarifePage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-24" data-aos="fade-up">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 md:hidden">
             <label
@@ -389,7 +390,7 @@ export default function TarifePage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-24" data-aos="fade-up">
         <div className="mx-auto max-w-6xl rounded-[32px] bg-dental-heading px-6 py-10 text-white shadow-2xl md:px-10 md:py-12">
           <div className="flex flex-col items-center gap-8 text-center">
             <div className="flex flex-col items-center">

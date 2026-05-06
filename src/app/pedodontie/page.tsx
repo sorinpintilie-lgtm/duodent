@@ -355,7 +355,7 @@ export default function PedodontiePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-dental-blue via-white to-dental-cream pt-8 sm:pt-12">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-dental-blue via-white to-dental-cream pt-8 sm:pt-12" data-aos="fade-up">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute left-[-8%] top-20 h-56 w-56 rounded-full bg-dental-blueDark/30 blur-3xl" />
           <div className="absolute right-[-6%] top-12 h-72 w-72 rounded-full bg-dental-mint/10 blur-3xl" />
@@ -424,7 +424,7 @@ export default function PedodontiePage() {
         </div>
       </section>
 
-      <section id="prima-vizita" className="bg-dental-blue/45 py-16 sm:py-20">
+      <section id="prima-vizita" className="bg-dental-blue/45 py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Prima vizită"
@@ -447,7 +447,7 @@ export default function PedodontiePage() {
         </div>
       </section>
 
-      <section className="bg-dental-cream py-16 sm:py-20">
+      <section className="bg-dental-cream py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <div>
@@ -484,7 +484,7 @@ export default function PedodontiePage() {
         </div>
       </section>
 
-      <section id="intrebari" className="bg-white py-16 sm:py-20">
+      <section id="intrebari" className="bg-white py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Întrebări frecvente"
@@ -511,7 +511,7 @@ export default function PedodontiePage() {
         </div>
       </section>
 
-      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 py-16 sm:py-20">
+      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-[32px] border border-dental-blueDark/10 bg-white px-6 py-8 shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] sm:px-8 sm:py-10">
             <div className="flex flex-col items-center text-center">

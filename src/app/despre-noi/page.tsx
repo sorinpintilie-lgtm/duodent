@@ -370,7 +370,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Povestea Duo Dent"
@@ -423,7 +423,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Ce ne definește"
@@ -527,7 +527,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Abordare interdisciplinară"
@@ -576,7 +576,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20">
+      <section className="py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Cele 3 locații"
@@ -592,7 +592,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Tehnologii și dotări"
@@ -770,7 +770,7 @@ export default function DespreNoiPage() {
         </div>
       </section>
 
-      <section className="pb-16 pt-8 sm:pb-20 sm:pt-10">
+      <section className="pb-16 pt-8 sm:pb-20 sm:pt-10" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[36px] bg-dental-heading shadow-2xl">
             <div className="absolute inset-0">

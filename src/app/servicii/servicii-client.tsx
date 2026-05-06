@@ -218,7 +218,7 @@ export default function ServiciiClientPage() {
         </div>
       </section>
 
-      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 px-6 py-14 lg:py-16">
+      <section className="border-t border-dental-blueDark/10 bg-dental-blue/40 px-6 py-14 lg:py-16" data-aos="fade-up">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[32px] border border-dental-blueDark/10 bg-white px-6 py-8 text-center shadow-[0_20px_70px_-45px_rgba(17,24,39,0.28)] sm:px-8 sm:py-10">
             <div className="mx-auto max-w-3xl space-y-3">

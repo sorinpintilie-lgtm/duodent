@@ -120,6 +120,7 @@ export default function DuoDentHome() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="relative z-10"
+          data-aos="fade-up"
         >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
             <Microscope size={14} className="text-dental-mint" />
@@ -220,6 +221,7 @@ export default function DuoDentHome() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.75 }}
               className="max-w-2xl"
+              data-aos="fade-up"
             >
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
                 <Microscope size={14} className="text-dental-mint" />
@@ -280,7 +282,7 @@ export default function DuoDentHome() {
       </header>
 
       {/* WHY US */}
-      <section id="de-ce-noi" className="bg-white px-6 py-24">
+      <section id="de-ce-noi" className="bg-white px-6 py-24" data-aos="fade-up">
         <div className="mx-auto mb-14 max-w-3xl text-center">
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
             De ce Duo Dent
@@ -313,7 +315,7 @@ export default function DuoDentHome() {
       </section>
 
       {/* SERVICES */}
-      <section id="servicii" className="bg-dental-cream px-6 py-24">
+      <section id="servicii" className="bg-dental-cream px-6 py-24" data-aos="fade-up">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
@@ -328,11 +330,14 @@ export default function DuoDentHome() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
+            {services.map((service, index) => (
               <div
                 key={service.title}
                 className="flex items-start gap-4 rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                data-aos="fade-up"
+                data-aos-delay={index * 150}
+
               >
                 <div className="shrink-0 rounded-xl bg-dental-blue p-3 text-dental-heading">
                   {service.icon}
@@ -376,7 +381,7 @@ export default function DuoDentHome() {
       {/* CTA PRIMARY */}
       <section className="bg-dental-cream px-6 pb-24">
         <div className="mx-auto max-w-6xl">
-          <div className="overflow-hidden rounded-[2rem] border border-dental-blue/50 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-[2rem] border border-dental-blue/50 bg-white shadow-sm" data-aos="fade-up">
             <div className="flex flex-col items-center text-center px-8 py-10 md:px-12 md:py-12">
               <div className="max-w-2xl">
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">

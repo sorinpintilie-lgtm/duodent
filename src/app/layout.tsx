@@ -2,6 +2,8 @@ import './globals.css';
 import { Nunito, Open_Sans } from 'next/font/google';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import AosInit from '@/components/aos-init';
+import ScrollToTop from '@/components/scroll-to-top';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 
@@ -61,6 +63,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${nunito.variable} ${openSans.variable} bg-dental-cream font-body text-dental-text antialiased`}
       >
+        <AosInit />
+        <ScrollToTop />
         <SiteHeader />
         <div className="pt-20">
           {children}

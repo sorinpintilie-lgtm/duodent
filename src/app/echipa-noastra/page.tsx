@@ -204,6 +204,7 @@ export default function EchipaNoastraPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
+              data-aos="fade-up"
             >
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
                 <User size={14} className="text-dental-mint" />
@@ -240,7 +241,7 @@ export default function EchipaNoastraPage() {
         </div>
       </header>
 
-      <section id="selector-locatie" className="px-6 pb-20">
+      <section id="selector-locatie" className="px-6 pb-20" data-aos="fade-up">
         <div className="mx-auto max-w-6xl">
           <div className="mb-4 max-w-2xl">
             <h2 className="font-rounded text-3xl font-bold text-dental-heading sm:text-4xl">
@@ -305,6 +306,7 @@ export default function EchipaNoastraPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -18 }}
               transition={{ duration: 0.25 }}
+              data-aos="fade-up"
             >
               <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div>
@@ -536,6 +538,24 @@ export default function EchipaNoastraPage() {
                         )}
                       </div>
                     </div>
+
+                    {/* Desktop CTA buttons under image */}
+                    <div className="mt-6 hidden lg:flex lg:flex-col lg:gap-3">
+                      <a
+                        href={phoneHref(activeLocation.phones[0])}
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-dental-mint px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-dental-mintDark"
+                      >
+                        <Phone size={16} />
+                        Sună cabinetul
+                      </a>
+                      <button
+                        type="button"
+                        onClick={() => setActiveDoctorState(null)}
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
+                      >
+                        Închide
+                      </button>
+                    </div>
                   </div>
 
                   <div>
@@ -602,7 +622,8 @@ export default function EchipaNoastraPage() {
                       </div>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-3">
+                    {/* Mobile CTA buttons */}
+                    <div className="mt-8 flex flex-wrap gap-3 lg:hidden">
                       <a
                         href={phoneHref(activeLocation.phones[0])}
                         className="inline-flex items-center gap-2 rounded-2xl bg-dental-mint px-5 py-3 font-rounded text-sm font-bold text-white transition hover:bg-dental-mintDark"
@@ -613,7 +634,7 @@ export default function EchipaNoastraPage() {
                       <button
                         type="button"
                         onClick={() => setActiveDoctorState(null)}
-                        className="inline-flex items-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-dental-heading/10 bg-white px-5 py-3 font-rounded text-sm font-bold text-dental-heading transition hover:bg-dental-blue"
                       >
                         Închide
                       </button>
