@@ -112,7 +112,7 @@ export default function DuoDentHome() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
       {/* HERO MOBILE */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-14 pt-28 md:hidden">
+      <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-14 pt-8 md:hidden">
         <div className="absolute right-0 top-0 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-3xl" />
 
         <motion.div
@@ -201,7 +201,7 @@ export default function DuoDentHome() {
       </header>
 
       {/* HERO DESKTOP */}
-      <header className="relative hidden min-h-screen items-center overflow-hidden md:flex">
+      <header className="relative hidden min-h-screen items-center overflow-hidden md:flex pt-10 pb-20">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-dentist.jpg"

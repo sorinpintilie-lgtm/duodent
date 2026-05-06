@@ -300,7 +300,7 @@ export default function DespreNoiPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
-      <section className="relative isolate overflow-hidden pt-28 sm:pt-32">
+      <section className="relative isolate overflow-hidden pt-8 sm:pt-12">
         <div className="absolute inset-0">
           <Image
             src="/images/despre-noi/hero-mobile.jpg"

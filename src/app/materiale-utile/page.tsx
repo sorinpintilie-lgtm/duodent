@@ -31,7 +31,7 @@ export default function MaterialeUtilePage() {
     : articles
 
   return (
-    <main className="pb-24 pt-24 md:pt-28">
+    <main className="pb-24 pt-0">
       <ArticleListHero count={articles.length} />
 
       <section className="mx-auto max-w-6xl px-6">

@@ -193,7 +193,7 @@ export default function EchipaNoastraPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
-      <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-16 pt-28 md:pb-20">
+      <header className="relative overflow-hidden bg-gradient-to-b from-dental-blue to-dental-cream px-6 pb-16 pt-8 md:pb-20">
         <div className="absolute left-0 top-0 h-56 w-56 -translate-x-1/3 -translate-y-1/3 rounded-full bg-white/80 blur-3xl" />
         <div className="absolute right-0 top-16 h-72 w-72 translate-x-1/3 rounded-full bg-dental-mint/10 blur-3xl" />
 

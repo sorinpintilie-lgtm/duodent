@@ -78,7 +78,7 @@ export default function MaterialeUtileArticlePage({ params }: Props) {
   const { newer, older } = getAdjacentArticles(article.slug)
 
   return (
-    <main className="pb-24 pt-28">
+    <main className="pb-24 pt-8">
       <ArticleJsonLd article={article} />
 
       <section className="mx-auto max-w-4xl px-6">

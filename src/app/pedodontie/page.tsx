@@ -355,7 +355,7 @@ export default function PedodontiePage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
-      <section className="relative isolate overflow-hidden bg-gradient-to-br from-dental-blue via-white to-dental-cream pt-28 sm:pt-32">
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-dental-blue via-white to-dental-cream pt-8 sm:pt-12">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute left-[-8%] top-20 h-56 w-56 rounded-full bg-dental-blueDark/30 blur-3xl" />
           <div className="absolute right-[-6%] top-12 h-72 w-72 rounded-full bg-dental-mint/10 blur-3xl" />
