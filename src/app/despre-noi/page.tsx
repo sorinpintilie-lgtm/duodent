@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 
 const definingItems = [
   {
@@ -225,6 +226,8 @@ export default function DespreNoiPage() {
   const scrollPositionRef = useRef(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const definingScrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const enableMotion = useDesktopMotion();
 
   // Prevent body scroll and hide header when modal is open
   useEffect(() => {

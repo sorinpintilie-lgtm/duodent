@@ -11,6 +11,19 @@ body {
     background: white !important;
     backdrop-filter: none !important;
   }
+
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main,
+  section {
+    touch-action: pan-y;
+  }
 }
 
 /* Hide header when modal is open */

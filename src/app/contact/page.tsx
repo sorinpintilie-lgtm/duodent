@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChangeEvent, FormEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 import {
   ArrowRight,
   CalendarDays,
@@ -279,6 +280,8 @@ export default function ContactPage() {
     [formValues.location]
   );
 
+  const enableMotion = useDesktopMotion();
+
   const onFieldChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
@@ -376,11 +379,10 @@ export default function ContactPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={enableMotion ? { opacity: 0, y: 24 } : false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
+            transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
             className="max-w-3xl"
-            data-aos="fade-up"
           >
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mintDark/85">
               Contact Duo Dent

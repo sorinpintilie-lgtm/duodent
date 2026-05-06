@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 import {
   ArrowRight,
   Baby,
@@ -108,6 +109,8 @@ export default function DuoDentHome() {
       return () => scrollContainer.removeEventListener('scroll', handleScroll);
     }
   }, []);
+
+  const enableMotion = useDesktopMotion();
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
@@ -217,11 +220,10 @@ export default function DuoDentHome() {
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <motion.div
-              initial={{ opacity: 0, x: -28 }}
+              initial={enableMotion ? { opacity: 0, x: -28 } : false}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.75 }}
+              transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
               className="max-w-2xl"
-              data-aos="fade-up"
             >
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
                 <Microscope size={14} className="text-dental-mint" />

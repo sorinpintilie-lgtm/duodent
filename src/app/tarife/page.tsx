@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useDesktopMotion } from '@/hooks/use-desktop-motion';
 import {
   ArrowRight,
   Building2,
@@ -98,6 +99,8 @@ export default function TarifePage() {
 
   const availableCategories = selectedClinic.categories;
 
+  const enableMotion = useDesktopMotion();
+
   const selectedCategory = useMemo(() => {
     if (!availableCategories.some((category) => category.id === selectedCategoryId)) {
       return availableCategories[0];
@@ -138,11 +141,10 @@ export default function TarifePage() {
 
         <div className="relative mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={enableMotion ? { opacity: 0, y: 24 } : false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
+            transition={enableMotion ? { duration: 0.35, ease: "easeOut" } : { duration: 0 }}
             className="mx-auto flex max-w-3xl flex-col items-center text-center"
-            data-aos="fade-up"
           >
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-dental-heading shadow-sm backdrop-blur">
               <ClipboardList size={14} className="text-dental-mint" />
