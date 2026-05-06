@@ -36,8 +36,12 @@ body.modal-open nav {
 .scrollbar-hide {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
-  scroll-snap-type: x mandatory; /* Strict horizontal snapping */
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
+}
+
+/* Scroll snap for horizontal carousels */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
 }

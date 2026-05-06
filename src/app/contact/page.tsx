@@ -372,7 +372,7 @@ export default function ContactPage() {
   return (
     <div className="bg-white text-dental-body">
       <section className="relative overflow-hidden border-b border-dental-blueDark/10 bg-dental-blue/45">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(94,177,168,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(126,169,219,0.18),transparent_30%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(94,177,168,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(126,169,219,0.18),transparent_30%)] pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <motion.div
@@ -415,10 +415,10 @@ export default function ContactPage() {
             transition={{ duration: 0.4 }}
             className="rounded-[28px] border border-dental-blueDark/10 bg-dental-blue/35 p-4 shadow-sm sm:p-6"
           >
-            <div className="overflow-x-auto scrollbar-hide md:overflow-visible">
+            <div className="overflow-x-auto scrollbar-hide scroll-snap-x md:overflow-visible">
               <div
                 ref={processCardsScroll.containerRef}
-                className="flex gap-5 snap-x snap-mandatory overflow-x-auto scrollbar-hide pb-2 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:snap-none"
+                className="flex gap-5 snap-x snap-mandatory overflow-x-auto scrollbar-hide scroll-snap-x pb-2 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:snap-none"
               >
                 {processCards.map((item) => {
                   const Icon = item.icon;

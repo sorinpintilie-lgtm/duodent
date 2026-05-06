@@ -203,7 +203,7 @@ export default function DuoDentHome() {
 
       {/* HERO DESKTOP */}
       <header className="relative hidden min-h-screen items-center overflow-hidden md:flex pt-10 pb-20">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src="/hero-dentist.jpg"
             alt="Cabinet Duo Dent"
@@ -211,7 +211,7 @@ export default function DuoDentHome() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-dental-cream via-dental-blue/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-dental-cream via-dental-blue/90 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
@@ -493,7 +493,7 @@ export default function DuoDentHome() {
 
           {/* Mobile: Horizontal snap scroll */}
           <div className="block lg:hidden">
-            <div ref={testimonialScrollContainerRef} className="overflow-x-auto scrollbar-hide">
+            <div ref={testimonialScrollContainerRef} className="overflow-x-auto scrollbar-hide scroll-snap-x">
               <div className="flex snap-x snap-mandatory pb-4">
                 {testimonials.map((testimonial, index) => (
                   <div

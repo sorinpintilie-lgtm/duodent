@@ -301,7 +301,7 @@ export default function DespreNoiPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
       <section className="relative isolate overflow-hidden pt-8 sm:pt-12">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <Image
             src="/images/despre-noi/hero-mobile.jpg"
             alt="Imagine reprezentativă Duo Dent"
@@ -318,8 +318,8 @@ export default function DespreNoiPage() {
             sizes="100vw"
           />
         </div>
-        <div className="absolute inset-0 bg-dental-heading/55" />
-        <div className="absolute inset-0 bg-gradient-to-r from-dental-heading/85 via-dental-heading/65 to-dental-heading/35" />
+        <div className="absolute inset-0 bg-dental-heading/55 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dental-heading/85 via-dental-heading/65 to-dental-heading/35 pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
           <div className="max-w-3xl">
@@ -441,7 +441,7 @@ export default function DespreNoiPage() {
               />
             </div>
 
-            <div ref={definingScrollContainerRef} className="overflow-x-auto scrollbar-hide">
+            <div ref={definingScrollContainerRef} className="overflow-x-auto scrollbar-hide scroll-snap-x">
               <div className="flex snap-x snap-mandatory pb-4">
                 {definingItems.map((item, index) => {
                   const Icon = item.icon;
@@ -695,7 +695,7 @@ export default function DespreNoiPage() {
             </div>
 
             {/* Mobile: Horizontal pagination scroll - one card per screen */}
-            <div ref={scrollContainerRef} className="block md:hidden overflow-x-auto scrollbar-hide">
+            <div ref={scrollContainerRef} className="block md:hidden overflow-x-auto scrollbar-hide scroll-snap-x">
               <div className="flex snap-x snap-mandatory pb-4">
                 {technologyItems.map((item, index) => {
                   const Icon = item.icon;
@@ -773,7 +773,7 @@ export default function DespreNoiPage() {
       <section className="pb-16 pt-8 sm:pb-20 sm:pt-10" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[36px] bg-dental-heading shadow-2xl">
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 pointer-events-none">
               <Image
                 src="/images/despre-noi/cta-final.jpg"
                 alt="Imagine ambientală Duo Dent"
@@ -782,7 +782,7 @@ export default function DespreNoiPage() {
                 sizes="100vw"
               />
             </div>
-            <div className="absolute inset-0 bg-dental-heading/45" />
+            <div className="absolute inset-0 bg-dental-heading/45 pointer-events-none" />
 
             <div className="relative flex flex-col items-center text-center px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-12 lg:py-14">
               <div className="max-w-3xl">

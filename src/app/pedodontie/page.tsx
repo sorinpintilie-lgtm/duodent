@@ -257,10 +257,10 @@ function MobileSnapRow({
 }) {
   return (
     <>
-      <div className="overflow-x-auto scrollbar-hide md:overflow-visible">
+      <div className="overflow-x-auto scrollbar-hide scroll-snap-x md:overflow-visible">
         <div
           ref={containerRef}
-          className="flex gap-6 snap-x snap-mandatory overflow-x-auto scrollbar-hide px-1 pb-2 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:snap-none"
+          className="flex gap-6 snap-x snap-mandatory overflow-x-auto scrollbar-hide scroll-snap-x px-1 pb-2 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:snap-none"
         >
           {children}
         </div>
@@ -356,7 +356,7 @@ export default function PedodontiePage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-dental-cream font-body text-dental-text">
       <section className="relative isolate overflow-hidden bg-gradient-to-br from-dental-blue via-white to-dental-cream pt-8 sm:pt-12" data-aos="fade-up">
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute left-[-8%] top-20 h-56 w-56 rounded-full bg-dental-blueDark/30 blur-3xl" />
           <div className="absolute right-[-6%] top-12 h-72 w-72 rounded-full bg-dental-mint/10 blur-3xl" />
           <div className="absolute bottom-[-5rem] left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-dental-blue/60 blur-3xl" />
