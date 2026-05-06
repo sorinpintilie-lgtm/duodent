@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
-
 function escapeHtml(value: unknown) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -16,12 +14,32 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    if (body.website && body.website.trim()) {
+    // Honeypot anti-spam
+    if (body.website && String(body.website).trim()) {
       return NextResponse.json({
         success: true,
         message: "Mesajul a fost trimis cu succes.",
       });
     }
+
+    const missingEnv = [
+      !process.env.SENDGRID_API_KEY ? "SENDGRID_API_KEY" : null,
+      !process.env.SENDGRID_FROM_EMAIL ? "SENDGRID_FROM_EMAIL" : null,
+      !process.env.SENDGRID_TO_EMAIL ? "SENDGRID_TO_EMAIL" : null,
+    ].filter(Boolean);
+
+    if (missingEnv.length > 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Configurarea formularului nu este completă.",
+          missingEnv,
+        },
+        { status: 500 }
+      );
+    }
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
     const name = escapeHtml(body.name);
     const phone = escapeHtml(body.phone);
@@ -33,26 +51,16 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Numele și telefonul sunt obligatorii.",
+          message: "Completează numele și numărul de telefon.",
         },
         { status: 400 }
       );
     }
 
-    if (!process.env.SENDGRID_API_KEY || !process.env.SENDGRID_FROM_EMAIL || !process.env.SENDGRID_TO_EMAIL) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Configurarea formularului nu este completă.",
-        },
-        { status: 500 }
-      );
-    }
-
     await sgMail.send({
-      to: process.env.SENDGRID_TO_EMAIL,
-      from: process.env.SENDGRID_FROM_EMAIL,
-      replyTo: email || process.env.SENDGRID_FROM_EMAIL,
+      to: process.env.SENDGRID_TO_EMAIL as string,
+      from: process.env.SENDGRID_FROM_EMAIL as string,
+      replyTo: email || (process.env.SENDGRID_FROM_EMAIL as string),
       subject: `Programare nouă - Duo Dent${location ? ` ${location}` : ""}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #111; line-height: 1.6;">
@@ -71,15 +79,21 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Mesajul a fost trimis cu succes.",
+      message:
+        "Cererea a fost trimisă cu succes. Te vom contacta în cel mai scurt timp.",
     });
-  } catch (error) {
-    console.error("SendGrid error:", error);
+  } catch (error: any) {
+    console.error("SendGrid contact form error:", {
+      message: error?.message,
+      code: error?.code,
+      response: error?.response?.body,
+    });
 
     return NextResponse.json(
       {
         success: false,
-        message: "A apărut o eroare. Te rugăm să încerci din nou.",
+        message:
+          "Mesajul nu a putut fi trimis. Te rugăm să încerci din nou sau să ne contactezi telefonic.",
       },
       { status: 500 }
     );
