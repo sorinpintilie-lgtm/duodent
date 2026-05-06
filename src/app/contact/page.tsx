@@ -380,6 +380,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
             className="max-w-3xl"
+            data-aos="fade-up"
           >
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mintDark/85">
               Contact Duo Dent
@@ -405,7 +406,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-b border-dental-blueDark/10 bg-white">
+      <section className="border-b border-dental-blueDark/10 bg-white" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -449,7 +450,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section id="formular-contact" className="bg-dental-blue/40">
+      <section id="formular-contact" className="bg-dental-blue/40" data-aos="fade-up">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dental-mintDark/85">

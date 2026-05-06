@@ -138,7 +138,7 @@ export default function DuoDentHome() {
           </p>
 
           <div className="relative mb-7">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-4 border-white bg-white shadow-xl" data-aos="zoom-in">
               <Image
                 src="/hero-dentist.jpg"
                 alt="Echipa Duo Dent"
@@ -297,10 +297,12 @@ export default function DuoDentHome() {
         </div>
 
         <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
-          {trustItems.map((item) => (
+          {trustItems.map((item, index) => (
             <div
               key={item.title}
               className="rounded-3xl border border-dental-blue/50 bg-dental-cream p-8 text-center transition hover:-translate-y-1 hover:shadow-lg"
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
             >
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-dental-blue text-dental-mint">
                 {item.icon}
@@ -424,7 +426,7 @@ export default function DuoDentHome() {
         className="relative overflow-hidden bg-dental-blue/30 px-6 py-24"
       >
         <div className="relative z-10 mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
-          <div>
+          <div data-aos="fade-right">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-dental-mint px-4 py-1 text-xs font-bold uppercase text-white">
               <Baby size={16} />
               Stomatologie pediatrică
@@ -460,7 +462,7 @@ export default function DuoDentHome() {
             </a>
           </div>
 
-          <div className="rounded-[2rem] bg-white p-4 shadow-xl">
+          <div className="rounded-[2rem] bg-white p-4 shadow-xl" data-aos="fade-left">
             <div className="relative aspect-square overflow-hidden rounded-[1.5rem] bg-dental-cream">
               <Image
                 src="/kids-dentist.jpg"
@@ -474,7 +476,7 @@ export default function DuoDentHome() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-white px-6 py-24">
+      <section className="bg-white px-6 py-24" data-aos="fade-up">
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-dental-mint">
@@ -544,10 +546,12 @@ export default function DuoDentHome() {
 
           {/* Desktop: Original grid layout */}
           <div className="hidden lg:grid gap-6 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.name}
                 className="rounded-2xl border border-dental-blue bg-dental-cream p-8"
+                data-aos="fade-up"
+                data-aos-delay={index * 200}
               >
                 <div className="mb-4 flex text-yellow-400">
                   <Star fill="currentColor" />

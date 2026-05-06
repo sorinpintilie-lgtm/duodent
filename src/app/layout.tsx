@@ -2,7 +2,7 @@ import './globals.css';
 import { Nunito, Open_Sans } from 'next/font/google';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import AosInit from '@/components/aos-init';
+import AosInit from '@/components/AosInit';
 import ScrollToTop from '@/components/scroll-to-top';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
