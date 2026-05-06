@@ -1,0 +1,10 @@
+{
+  "name": "Duo Dent",
+  "short_name": "Duo Dent",
+  "description": "Clinică stomatologică în București, Belciugatele și Valea Călugărească.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4DB6AC",
+  "lang": "ro-RO"
+}
