@@ -64,12 +64,10 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family: Arial, sans-serif; color: #111; line-height: 1.6;">
           <h2>Programare nouă de pe site-ul Duo Dent</h2>
-
           <p><strong>Nume:</strong> ${name}</p>
           <p><strong>Telefon:</strong> ${phone}</p>
           <p><strong>Email:</strong> ${email || "Nu a fost completat"}</p>
           <p><strong>Locație:</strong> ${location || "Nu a fost selectată"}</p>
-
           <p><strong>Mesaj:</strong></p>
           <p>${message || "Nu a fost completat"}</p>
         </div>
